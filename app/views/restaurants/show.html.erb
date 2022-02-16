@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <title>Document</title>
+</head>
+<body>
+
+
+<div class="container">
+  <div class="card text-center p-4">
+    <h1 class="text-primary"><%= @restaurant.name %></h1>
+    <h4>Location: <%= @restaurant.address %></h4>
+    <h4>Phone Number: <%= @restaurant.phone_number %></h4>
+    <h4>Cuisine: <%= @restaurant.category %></h4>
+    <br>
+    <h4>Reviews:</h4>
+    <ul class="list">
+    <% @restaurant.reviews.each do |review| %>
+      <li><%= review.content%> - <%= review.rating %></li>
+    <% end %>
+    </ul>
+  <div class="d-flex justify-content-center">
+      <%= link_to "Add a rating", new_restaurant_review_path(@restaurant), class:"btn btn-primary" %>
+      <%= link_to "Homepage", restaurants_path, class:"btn btn-primary ml-3" %>
+  </div>
+  </div>
+</div>
+</body>
+</html>
